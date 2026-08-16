@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,6 +93,19 @@
     </div>
   </header>
 
+  <!-- URGENCY TIMER BANNER -->
+  <div id="timerBanner" class="bg-[var(--amber)] text-[#0B0E14]">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-2.5 flex flex-wrap items-center justify-center gap-2 text-sm font-medium text-center">
+      <span id="timerLabel">Your uncapped match window closes in</span>
+      <span id="timerDisplay" class="font-mono font-semibold tabular-nums">48:00:00</span>
+    </div>
+  </div>
+  <div id="timerExpiredBanner" class="hidden bg-[var(--surface-2)] border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-2.5 text-sm text-[var(--muted)] text-center">
+      Your 48‑hour match window has closed. You can still sign up — ask about current offers below.
+    </div>
+  </div>
+
   <main id="top">
 
     <!-- HERO -->
@@ -101,10 +115,10 @@
           <p class="font-mono text-xs uppercase tracking-[0.2em] text-[var(--amber)] mb-5">Official Polymarket bonus partner</p>
           <h1 class="font-display font-semibold text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.05] tracking-tight">
             Your first deposit,<br>
-            <span class="text-[var(--amber)]">doubled.</span>
+            <span class="text-[var(--amber)]">doubled. No cap.</span>
           </h1>
           <p class="mt-6 text-[var(--muted)] text-lg leading-relaxed max-w-lg">
-            Sign up through ProbablyRight and we'll match your first Polymarket deposit dollar‑for‑dollar, up to $200 — extra position size on any market, from sports outcomes to economic data to pop‑culture predictions.
+            Sign up through ProbablyRight and we'll match your first Polymarket deposit dollar‑for‑dollar — any amount, no ceiling — extra position size on any market, from sports outcomes to economic data to pop‑culture predictions.
           </p>
           <div class="mt-8 flex flex-wrap items-center gap-4">
             <a href="#signup" class="glow-amber bg-[var(--amber)] text-[#0B0E14] font-semibold px-6 py-3.5 rounded-full hover:brightness-110 transition">
@@ -149,7 +163,7 @@
                 </div>
                 <span class="font-mono text-sm text-[var(--amber)] font-medium">$200</span>
               </div>
-              <p class="text-xs text-[var(--muted)] mt-2">with your ProbablyRight match</p>
+              <p class="text-xs text-[var(--muted)] mt-2">with your ProbablyRight match · example, no cap on real deposits</p>
             </div>
           </div>
         </div>
@@ -177,12 +191,12 @@
         <div class="rounded-2xl border border-white/10 bg-[var(--surface)] p-6">
           <span class="step-num text-4xl font-semibold text-[var(--amber)]">02</span>
           <h3 class="font-display text-lg mt-4 mb-2">Deposit on Polymarket</h3>
-          <p class="text-[var(--muted)] text-sm leading-relaxed">Fund your Polymarket account through our partner link. Minimum qualifying deposit is $10.</p>
+          <p class="text-[var(--muted)] text-sm leading-relaxed">Fund your account through <a href="https://polymarket.com/?r=PolPromos" target="_blank" rel="noopener" class="underline hover:text-[var(--text)]">our partner link</a>. Minimum qualifying deposit is $10 — no maximum.</p>
         </div>
         <div class="rounded-2xl border border-white/10 bg-[var(--surface)] p-6">
           <span class="step-num text-4xl font-semibold text-[var(--amber)]">03</span>
           <h3 class="font-display text-lg mt-4 mb-2">Get matched</h3>
-          <p class="text-[var(--muted)] text-sm leading-relaxed">We match your deposit dollar‑for‑dollar, up to $200, credited as trading credit within 24 hours.</p>
+          <p class="text-[var(--muted)] text-sm leading-relaxed">We match your entire deposit dollar‑for‑dollar, no cap, credited as trading credit within 24 hours — as long as you deposit within your 48‑hour window.</p>
         </div>
       </div>
     </section>
@@ -193,7 +207,7 @@
         <div>
           <p class="font-mono text-xs uppercase tracking-[0.2em] text-[var(--amber)] mb-3">Bonus calculator</p>
           <h2 class="font-display text-3xl sm:text-4xl font-semibold tracking-tight mb-5">See your match before you deposit.</h2>
-          <p class="text-[var(--muted)] leading-relaxed max-w-md">Move the slider to your planned first deposit and watch your total buying power update. Matches are capped at $200.</p>
+          <p class="text-[var(--muted)] leading-relaxed max-w-md">Move the slider to your planned first deposit and watch your total buying power update. No cap — every dollar gets matched.</p>
         </div>
 
         <div class="rounded-2xl border border-white/10 bg-[var(--ink)] p-7">
@@ -201,10 +215,10 @@
             <label for="depositSlider" class="text-sm text-[var(--muted)]">Your deposit</label>
             <span id="depositLabel" class="font-mono text-lg font-semibold">$100</span>
           </div>
-          <input id="depositSlider" type="range" min="10" max="400" step="5" value="100"
+          <input id="depositSlider" type="range" min="10" max="2000" step="10" value="100"
                  class="w-full accent-[var(--amber)] cursor-pointer">
           <div class="flex justify-between text-xs text-[var(--muted)] font-mono mt-1">
-            <span>$10</span><span>$400</span>
+            <span>$10</span><span>$2,000+</span>
           </div>
 
           <div class="grid grid-cols-2 gap-4 mt-8">
@@ -222,7 +236,7 @@
             <div id="barDeposit" class="bar-fill h-full bg-white/50" style="width:50%"></div>
             <div id="barMatch" class="bar-fill h-full bg-[var(--amber)]" style="width:50%"></div>
           </div>
-          <p id="capNote" class="text-xs text-[var(--muted)] mt-3 h-4"></p>
+          <p id="capNote" class="text-xs text-[var(--muted)] mt-3 h-4">No cap — your full deposit is matched, dollar for dollar.</p>
         </div>
       </div>
     </section>
@@ -272,7 +286,11 @@
           <h3 class="font-display text-xl font-semibold mb-2">You're in.</h3>
           <p class="text-[var(--muted)] mb-5">Your bonus code is</p>
           <p id="bonusCode" class="font-mono text-2xl tracking-widest text-[var(--amber)] mb-6">PR-XXXXXX</p>
-          <p class="text-sm text-[var(--muted)] max-w-sm mx-auto">Head to Polymarket, make your first deposit, and enter this code at checkout. Your match lands within 24 hours.</p>
+          <p class="text-sm text-[var(--muted)] max-w-sm mx-auto mb-6">Head to Polymarket through the link below, make your first deposit — any amount — and enter this code at checkout. Your match lands within 24 hours.</p>
+          <a href="https://polymarket.com/?r=PolPromos" target="_blank" rel="noopener"
+             class="inline-block glow-amber bg-[var(--amber)] text-[#0B0E14] font-semibold px-6 py-3.5 rounded-full hover:brightness-110 transition">
+            Continue to Polymarket →
+          </a>
         </div>
       </div>
     </section>
@@ -306,10 +324,17 @@
         </details>
         <details class="group py-5">
           <summary class="flex items-center justify-between cursor-pointer list-none font-medium">
-            What's the catch?
+            Is there a cap on the match?
             <span class="text-[var(--muted)] group-open:rotate-45 transition-transform text-xl leading-none">+</span>
           </summary>
-          <p class="text-[var(--muted)] text-sm mt-3 leading-relaxed">None beyond the standard terms: the match is capped at $200, applies once per person, and prediction markets always carry the risk of losing your stake.</p>
+          <p class="text-[var(--muted)] text-sm mt-3 leading-relaxed">No — we match your first deposit dollar‑for‑dollar with no maximum. It applies once per person, and prediction markets always carry the risk of losing your stake, so deposit an amount you're genuinely comfortable with.</p>
+        </details>
+        <details class="group py-5">
+          <summary class="flex items-center justify-between cursor-pointer list-none font-medium">
+            What's the 48‑hour window?
+            <span class="text-[var(--muted)] group-open:rotate-45 transition-transform text-xl leading-none">+</span>
+          </summary>
+          <p class="text-[var(--muted)] text-sm mt-3 leading-relaxed">You have 48 hours from your first visit to this page to sign up and make your qualifying deposit. The timer at the top tracks your personal window and keeps running even if you close the tab and come back later.</p>
         </details>
       </div>
     </section>
@@ -321,10 +346,10 @@
     <div class="max-w-6xl mx-auto px-5 sm:px-8 py-12 grid md:grid-cols-[1fr,1.2fr] gap-8">
       <div>
         <p class="font-display font-semibold text-lg mb-2">ProbablyRight</p>
-        <p class="text-sm text-[var(--muted)] max-w-xs">An independent bonus partner for Polymarket signups. Not affiliated with or endorsed by Polymarket beyond this referral arrangement.</p>
+        <p class="text-sm text-[var(--muted)] max-w-xs">An independent bonus partner for <a href="https://polymarket.com/?r=PolPromos" target="_blank" rel="noopener" class="underline hover:text-[var(--text)]">Polymarket</a> signups. Not affiliated with or endorsed by Polymarket beyond this referral arrangement.</p>
       </div>
       <div class="text-xs text-[var(--muted)] leading-relaxed">
-        <p class="mb-2">Prediction markets involve real financial risk — only ever trade what you can afford to lose. This offer is available to eligible new users only, 18 years or older, in jurisdictions where Polymarket operates. Matches are capped at $200 per person and credited after a qualifying deposit clears. Full bonus terms and conditions apply and are available on request.</p>
+        <p class="mb-2">Prediction markets involve real financial risk — only ever deposit what you can afford to lose. This offer is available to eligible new users only, 18 years or older, in jurisdictions where Polymarket operates. Your match has no maximum but must be claimed within 48 hours of your first visit, and is credited after a qualifying deposit clears. Full bonus terms and conditions apply and are available on request.</p>
         <p>© 2026 ProbablyRight. All rights reserved.</p>
       </div>
     </div>
@@ -352,36 +377,103 @@
   };
   renderTicker();
 
-  // ---- Bonus calculator ----
-  const CAP = 200;
+  // ---- Bonus calculator (no cap — match always equals deposit) ----
   const slider = document.getElementById('depositSlider');
   const depositLabel = document.getElementById('depositLabel');
   const matchAmount = document.getElementById('matchAmount');
   const totalAmount = document.getElementById('totalAmount');
   const barDeposit = document.getElementById('barDeposit');
   const barMatch = document.getElementById('barMatch');
-  const capNote = document.getElementById('capNote');
 
   function updateCalculator(){
     const deposit = Number(slider.value);
-    const match = Math.min(deposit, CAP);
+    const match = deposit; // no cap: match always equals the deposit
     const total = deposit + match;
 
-    depositLabel.textContent = `$${deposit}`;
-    matchAmount.textContent = `$${match}`;
-    totalAmount.textContent = `$${total}`;
+    depositLabel.textContent = `$${deposit.toLocaleString()}`;
+    matchAmount.textContent = `$${match.toLocaleString()}`;
+    totalAmount.textContent = `$${total.toLocaleString()}`;
 
-    const depositPct = (deposit / total) * 100;
-    const matchPct = 100 - depositPct;
-    barDeposit.style.width = `${depositPct}%`;
-    barMatch.style.width = `${matchPct}%`;
-
-    capNote.textContent = deposit > CAP
-      ? `You're depositing above the $${CAP} match cap — the extra $${deposit - CAP} won't be matched.`
-      : '';
+    // always an even 50/50 split since match always equals deposit
+    barDeposit.style.width = `50%`;
+    barMatch.style.width = `50%`;
   }
   slider.addEventListener('input', updateCalculator);
   updateCalculator();
+
+  // ---- 48-hour countdown timer, persisted across revisits ----
+  // NOTE: window.storage is Claude's artifact-storage API — it only works
+  // inside Claude.ai. If you deploy this page on your own site, replace the
+  // window.storage calls below with a real cookie (e.g. document.cookie) or
+  // a backend call keyed to the visitor, so the deadline survives outside
+  // this environment too.
+  const WINDOW_HOURS = 48;
+  const WINDOW_MS = WINDOW_HOURS * 60 * 60 * 1000;
+  const STORAGE_KEY = 'probablyright:first-visit-deadline';
+
+  const timerBanner = document.getElementById('timerBanner');
+  const timerExpiredBanner = document.getElementById('timerExpiredBanner');
+  const timerDisplay = document.getElementById('timerDisplay');
+  let countdownInterval = null;
+
+  function formatRemaining(ms){
+    const totalSeconds = Math.max(0, Math.floor(ms / 1000));
+    const h = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+    const m = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+    const s = String(totalSeconds % 60).padStart(2, '0');
+    return `${h}:${m}:${s}`;
+  }
+
+  function showExpired(){
+    if (countdownInterval) clearInterval(countdownInterval);
+    timerBanner.classList.add('hidden');
+    timerExpiredBanner.classList.remove('hidden');
+  }
+
+  function startCountdown(deadline){
+    function tick(){
+      const remaining = deadline - Date.now();
+      if (remaining <= 0){
+        showExpired();
+        return;
+      }
+      timerDisplay.textContent = formatRemaining(remaining);
+    }
+    tick();
+    countdownInterval = setInterval(tick, 1000);
+  }
+
+  async function initTimer(){
+    try {
+      let deadline;
+      try {
+        const existing = await window.storage.get(STORAGE_KEY, false);
+        deadline = Number(existing.value);
+      } catch {
+        // no existing record — this is a first visit
+        deadline = Date.now() + WINDOW_MS;
+        await window.storage.set(STORAGE_KEY, String(deadline), false);
+      }
+
+      if (!deadline || Number.isNaN(deadline)) {
+        deadline = Date.now() + WINDOW_MS;
+        await window.storage.set(STORAGE_KEY, String(deadline), false);
+      }
+
+      if (deadline - Date.now() <= 0) {
+        showExpired();
+      } else {
+        startCountdown(deadline);
+      }
+    } catch (err) {
+      // Storage unavailable for some reason — fall back to an
+      // in-memory-only timer so the page still works, it just won't
+      // persist across a full page reload.
+      console.error('Timer storage error:', err);
+      startCountdown(Date.now() + WINDOW_MS);
+    }
+  }
+  initTimer();
 
   // ---- Signup form (client-side demo, no data leaves the page) ----
   const form = document.getElementById('signupForm');
