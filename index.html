@@ -7,35 +7,35 @@
 <title>ProbablyRight — Double your first deposit on Polymarket</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0B0E14;
-    --surface:#131826;
-    --surface-2:#1B2233;
-    --line:#28304510;
-    --text:#EDEFF3;
-    --muted:#8A93A6;
-    --yes:#34D399;
-    --no:#FB7185;
-    --amber:#FBBF24;
+    --bg:#F7F8FB;
+    --surface:#FFFFFF;
+    --surface-alt:#F1F3F8;
+    --border:#E4E7EF;
+    --text:#0F1226;
+    --muted:#6B7280;
+    --blue:#1652F0;
+    --blue-dark:#123FC0;
+    --blue-tint:#EAF0FE;
+    --yes:#0FA968;
+    --yes-tint:#E7F8F0;
+    --no:#E5484D;
+    --no-tint:#FDEBEC;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
-    background:var(--ink);
+    background:var(--bg);
     color:var(--text);
     font-family:'Inter',sans-serif;
+    font-feature-settings:'tnum' 1;
   }
-  .font-display{font-family:'Space Grotesk',sans-serif;}
-  .font-mono{font-family:'IBM Plex Mono',monospace;}
+  .tabular{ font-variant-numeric: tabular-nums; }
 
-  .bg-noise{
-    background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,0.045) 1px, transparent 0);
-    background-size:22px 22px;
-  }
-
-  .glow-amber{ box-shadow: 0 0 0 1px rgba(251,191,36,0.25), 0 20px 60px -20px rgba(251,191,36,0.35); }
+  .glow-blue{ box-shadow: 0 1px 2px rgba(15,18,38,0.04), 0 12px 28px -12px rgba(22,82,240,0.35); }
+  .card-shadow{ box-shadow: 0 1px 2px rgba(15,18,38,0.04), 0 1px 0 rgba(15,18,38,0.02); }
 
   /* Ticker */
   .ticker-track{
@@ -51,56 +51,58 @@
     .ticker-track{ animation:none; }
   }
 
-  .flicker{ animation: flicker-op 3.2s ease-in-out infinite; }
-  @keyframes flicker-op{
+  .pulse-dot{ animation: pulse-op 2.2s ease-in-out infinite; }
+  @keyframes pulse-op{
     0%,100%{ opacity:1; }
-    50%{ opacity:0.55; }
+    50%{ opacity:0.35; }
   }
-  @media (prefers-reduced-motion: reduce){ .flicker{ animation:none; } }
+  @media (prefers-reduced-motion: reduce){ .pulse-dot{ animation:none; } }
 
   input:focus-visible, button:focus-visible, a:focus-visible{
-    outline: 2px solid var(--amber);
+    outline: 2px solid var(--blue);
     outline-offset: 3px;
   }
 
   .bar-fill{ transition: width 0.5s cubic-bezier(.16,1,.3,1); }
 
-  .step-num{
-    font-family:'IBM Plex Mono',monospace;
-    font-variant-numeric: tabular-nums;
-  }
-
-  ::selection{ background:var(--amber); color:#0B0E14; }
+  ::selection{ background:var(--blue-tint); color:var(--blue-dark); }
 </style>
 </head>
-<body class="bg-noise antialiased">
+<body class="antialiased">
+
+  <!-- INDEPENDENCE NOTICE -->
+  <div class="bg-[var(--surface-alt)] border-b border-[var(--border)]">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-2 text-xs text-[var(--muted)] text-center">
+      ProbablyRight is an independent referral partner — not operated by, or an official part of, Polymarket.
+    </div>
+  </div>
 
   <!-- NAV -->
-  <header class="sticky top-0 z-40 backdrop-blur bg-[#0B0E14]/85 border-b border-white/5">
+  <header class="sticky top-0 z-40 backdrop-blur bg-white/90 border-b border-[var(--border)]">
     <div class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
-      <a href="#top" class="flex items-center gap-2 font-display font-semibold text-lg tracking-tight">
-        <span class="inline-block w-2 h-2 rounded-full bg-[var(--amber)]"></span>
+      <a href="#top" class="flex items-center gap-2 font-semibold text-lg tracking-tight text-[var(--text)]">
+        <span class="inline-flex w-7 h-7 rounded-full bg-[var(--blue)] items-center justify-center text-white text-sm font-bold">P</span>
         ProbablyRight
       </a>
-      <nav class="hidden md:flex items-center gap-8 text-sm text-[var(--muted)]">
+      <nav class="hidden md:flex items-center gap-8 text-sm text-[var(--muted)] font-medium">
         <a href="#how" class="hover:text-[var(--text)] transition-colors">How it works</a>
         <a href="#calculator" class="hover:text-[var(--text)] transition-colors">Bonus calculator</a>
         <a href="#faq" class="hover:text-[var(--text)] transition-colors">FAQ</a>
       </nav>
-      <a href="https://polymarket.com/?r=PolPromos" target="_blank" rel="noopener" class="text-sm font-medium bg-[var(--amber)] text-[#0B0E14] px-4 py-2 rounded-full hover:brightness-110 transition">
+      <a href="https://polymarket.com/?r=PolPromos" target="_blank" rel="noopener" class="text-sm font-semibold bg-[var(--blue)] text-white px-4 py-2 rounded-full hover:bg-[var(--blue-dark)] transition">
         Claim bonus
       </a>
     </div>
   </header>
 
   <!-- URGENCY TIMER BANNER -->
-  <div id="timerBanner" class="bg-[var(--amber)] text-[#0B0E14]">
+  <div id="timerBanner" class="bg-[var(--text)] text-white">
     <div class="max-w-6xl mx-auto px-5 sm:px-8 py-2.5 flex flex-wrap items-center justify-center gap-2 text-sm font-medium text-center">
-      <span id="timerLabel">Your uncapped match window closes in</span>
-      <span id="timerDisplay" class="font-mono font-semibold tabular-nums">48:00:00</span>
+      <span id="timerLabel" class="text-white/70">Your uncapped match window closes in</span>
+      <span id="timerDisplay" class="font-semibold tabular">48:00:00</span>
     </div>
   </div>
-  <div id="timerExpiredBanner" class="hidden bg-[var(--surface-2)] border-b border-white/10">
+  <div id="timerExpiredBanner" class="hidden bg-[var(--surface-alt)] border-b border-[var(--border)]">
     <div class="max-w-6xl mx-auto px-5 sm:px-8 py-2.5 text-sm text-[var(--muted)] text-center">
       Your 48‑hour match window has closed. You can still sign up — ask about current offers below.
     </div>
@@ -110,68 +112,88 @@
 
     <!-- HERO -->
     <section class="relative overflow-hidden">
-      <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-16 sm:pt-24 pb-14 grid lg:grid-cols-[1.1fr,0.9fr] gap-14 items-center">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-14 sm:pt-20 pb-14 grid lg:grid-cols-[1.1fr,0.9fr] gap-14 items-center">
         <div>
-          <p class="font-mono text-xs uppercase tracking-[0.2em] text-[var(--amber)] mb-5">Official Polymarket bonus partner</p>
-          <h1 class="font-display font-semibold text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.05] tracking-tight">
+          <p class="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--blue)] bg-[var(--blue-tint)] px-3 py-1 rounded-full mb-5">
+            Referral partner for Polymarket
+          </p>
+          <h1 class="font-extrabold text-4xl sm:text-5xl lg:text-[3.3rem] leading-[1.08] tracking-tight text-[var(--text)]">
             Your first deposit,<br>
-            <span class="text-[var(--amber)]">doubled. No cap.</span>
+            <span class="text-[var(--blue)]">doubled. No cap.</span>
           </h1>
           <p class="mt-6 text-[var(--muted)] text-lg leading-relaxed max-w-lg">
             Sign up through ProbablyRight and we'll match your first Polymarket deposit dollar‑for‑dollar — any amount, no ceiling — extra position size on any market, from sports outcomes to economic data to pop‑culture predictions.
           </p>
           <div class="mt-8 flex flex-wrap items-center gap-4">
-            <a href="https://polymarket.com/?r=PolPromos" target="_blank" rel="noopener" class="glow-amber bg-[var(--amber)] text-[#0B0E14] font-semibold px-6 py-3.5 rounded-full hover:brightness-110 transition">
+            <a href="https://polymarket.com/?r=PolPromos" target="_blank" rel="noopener" class="glow-blue bg-[var(--blue)] text-white font-semibold px-6 py-3.5 rounded-full hover:bg-[var(--blue-dark)] transition">
               Get my match on Polymarket →
             </a>
-            <a href="#how" class="text-sm text-[var(--muted)] hover:text-[var(--text)] transition-colors">See how it works →</a>
+            <a href="#how" class="text-sm text-[var(--muted)] hover:text-[var(--text)] transition-colors font-medium">See how it works →</a>
           </div>
-          <p class="mt-6 text-xs text-[var(--muted)] font-mono">18+ only · new Polymarket depositors · terms apply</p>
+          <p class="mt-6 text-xs text-[var(--muted)] tabular">18+ only · new Polymarket depositors · terms apply</p>
         </div>
 
-        <!-- Market card mock -->
-        <div class="relative">
-          <div class="rounded-2xl border border-white/10 bg-[var(--surface)] p-6 shadow-2xl shadow-black/40">
-            <div class="flex items-center justify-between mb-5">
-              <span class="font-mono text-xs text-[var(--muted)] uppercase tracking-wide">Sample market</span>
-              <span class="flex items-center gap-1.5 text-xs text-[var(--yes)] font-mono">
-                <span class="w-1.5 h-1.5 rounded-full bg-[var(--yes)] flicker"></span> live
+        <!-- Market feed mock (Polymarket-style card feed) -->
+        <div class="space-y-3">
+          <div class="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5 card-shadow">
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-2.5">
+                <span class="w-8 h-8 rounded-full bg-[var(--blue-tint)] flex items-center justify-center text-sm">📱</span>
+                <div>
+                  <p class="text-xs text-[var(--muted)] font-medium">Tech</p>
+                  <h3 class="text-sm font-semibold text-[var(--text)] leading-snug">Next flagship phone sells out in 24 hrs?</h3>
+                </div>
+              </div>
+              <span class="flex items-center gap-1 text-xs text-[var(--yes)] font-semibold shrink-0">
+                <span class="w-1.5 h-1.5 rounded-full bg-[var(--yes)] pulse-dot"></span> Live
               </span>
             </div>
-            <h3 class="font-display text-lg leading-snug mb-5">Will the next major phone launch sell out in 24 hours?</h3>
-            <div class="grid grid-cols-2 gap-3 mb-6">
-              <div class="rounded-lg bg-[var(--yes)]/10 border border-[var(--yes)]/25 p-3">
-                <p class="text-xs text-[var(--muted)] mb-1">Yes</p>
-                <p class="font-mono text-2xl font-semibold text-[var(--yes)]">63¢</p>
-              </div>
-              <div class="rounded-lg bg-[var(--no)]/10 border border-[var(--no)]/25 p-3">
-                <p class="text-xs text-[var(--muted)] mb-1">No</p>
-                <p class="font-mono text-2xl font-semibold text-[var(--no)]">37¢</p>
+            <div class="flex items-center gap-2">
+              <button class="flex-1 text-sm font-semibold rounded-lg py-2 bg-[var(--yes-tint)] text-[var(--yes)]">Yes · 63¢</button>
+              <button class="flex-1 text-sm font-semibold rounded-lg py-2 bg-[var(--no-tint)] text-[var(--no)]">No · 37¢</button>
+            </div>
+            <p class="text-xs text-[var(--muted)] mt-2 tabular">$2.4M Vol.</p>
+          </div>
+
+          <div class="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5 card-shadow">
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-2.5">
+                <span class="w-8 h-8 rounded-full bg-[var(--blue-tint)] flex items-center justify-center text-sm">🏈</span>
+                <div>
+                  <p class="text-xs text-[var(--muted)] font-medium">Sports</p>
+                  <h3 class="text-sm font-semibold text-[var(--text)] leading-snug">Home team covers the spread?</h3>
+                </div>
               </div>
             </div>
-            <div class="border-t border-white/10 pt-4">
-              <p class="text-xs text-[var(--muted)] mb-2">Your position with a $100 deposit</p>
-              <div class="flex items-center gap-3">
-                <div class="flex-1 h-2 rounded-full bg-white/10 overflow-hidden">
-                  <div class="h-full bg-[var(--muted)]/60 rounded-full" style="width:50%"></div>
-                </div>
-                <span class="font-mono text-sm text-[var(--muted)]">$100</span>
-              </div>
-              <div class="flex items-center gap-3 mt-2">
-                <div class="flex-1 h-2 rounded-full bg-white/10 overflow-hidden">
-                  <div class="h-full bg-[var(--amber)] rounded-full" style="width:100%"></div>
-                </div>
-                <span class="font-mono text-sm text-[var(--amber)] font-medium">$200</span>
-              </div>
-              <p class="text-xs text-[var(--muted)] mt-2">with your ProbablyRight match · example, no cap on real deposits</p>
+            <div class="flex items-center gap-2">
+              <button class="flex-1 text-sm font-semibold rounded-lg py-2 bg-[var(--yes-tint)] text-[var(--yes)]">Yes · 55¢</button>
+              <button class="flex-1 text-sm font-semibold rounded-lg py-2 bg-[var(--no-tint)] text-[var(--no)]">No · 45¢</button>
             </div>
+            <p class="text-xs text-[var(--muted)] mt-2 tabular">$980K Vol.</p>
+          </div>
+
+          <div class="rounded-2xl border-2 border-[var(--blue)] bg-[var(--blue-tint)] p-5">
+            <p class="text-xs text-[var(--muted)] mb-1">Your position with a $100 deposit</p>
+            <div class="flex items-center gap-3">
+              <div class="flex-1 h-2 rounded-full bg-white overflow-hidden">
+                <div class="h-full bg-[var(--muted)]/50 rounded-full" style="width:50%"></div>
+              </div>
+              <span class="text-sm text-[var(--muted)] tabular">$100</span>
+            </div>
+            <div class="flex items-center gap-3 mt-2">
+              <div class="flex-1 h-2 rounded-full bg-white overflow-hidden">
+                <div class="h-full bg-[var(--blue)] rounded-full" style="width:100%"></div>
+              </div>
+              <span class="text-sm text-[var(--blue)] font-semibold tabular">$200</span>
+            </div>
+            <p class="text-xs text-[var(--muted)] mt-2">with your ProbablyRight match · example, no cap on real deposits</p>
           </div>
         </div>
       </div>
 
       <!-- Ticker strip -->
-      <div class="border-y border-white/5 bg-[var(--surface)]/60 overflow-hidden py-3">
-        <div class="ticker-track font-mono text-sm text-[var(--muted)]" id="ticker">
+      <div class="border-y border-[var(--border)] bg-white overflow-hidden py-3">
+        <div class="ticker-track text-sm text-[var(--muted)] tabular" id="ticker">
           <!-- filled by JS, duplicated for seamless loop -->
         </div>
       </div>
@@ -179,62 +201,62 @@
 
     <!-- HOW IT WORKS -->
     <section id="how" class="max-w-6xl mx-auto px-5 sm:px-8 py-20 sm:py-28">
-      <p class="font-mono text-xs uppercase tracking-[0.2em] text-[var(--amber)] mb-3">Process</p>
-      <h2 class="font-display text-3xl sm:text-4xl font-semibold tracking-tight max-w-xl">Three steps between you and extra buying power.</h2>
+      <p class="text-xs font-semibold uppercase tracking-[0.15em] text-[var(--blue)] mb-3">Process</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight max-w-xl text-[var(--text)]">Three steps between you and extra buying power.</h2>
 
       <div class="grid md:grid-cols-3 gap-6 mt-14">
-        <div class="rounded-2xl border border-white/10 bg-[var(--surface)] p-6">
-          <span class="step-num text-4xl font-semibold text-[var(--amber)]">01</span>
-          <h3 class="font-display text-lg mt-4 mb-2">Click your link</h3>
+        <div class="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 card-shadow">
+          <span class="text-4xl font-extrabold text-[var(--blue)] tabular">01</span>
+          <h3 class="text-lg font-semibold mt-4 mb-2 text-[var(--text)]">Click your link</h3>
           <p class="text-[var(--muted)] text-sm leading-relaxed">Follow <a href="https://polymarket.com/?r=PolPromos" target="_blank" rel="noopener" class="underline hover:text-[var(--text)]">this ProbablyRight link</a> to Polymarket — it's what tracks your bonus.</p>
         </div>
-        <div class="rounded-2xl border border-white/10 bg-[var(--surface)] p-6">
-          <span class="step-num text-4xl font-semibold text-[var(--amber)]">02</span>
-          <h3 class="font-display text-lg mt-4 mb-2">Sign up on Polymarket</h3>
+        <div class="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 card-shadow">
+          <span class="text-4xl font-extrabold text-[var(--blue)] tabular">02</span>
+          <h3 class="text-lg font-semibold mt-4 mb-2 text-[var(--text)]">Sign up on Polymarket</h3>
           <p class="text-[var(--muted)] text-sm leading-relaxed">Create your account directly on Polymarket. We never collect your name, email, or funds — Polymarket handles your account.</p>
         </div>
-        <div class="rounded-2xl border border-white/10 bg-[var(--surface)] p-6">
-          <span class="step-num text-4xl font-semibold text-[var(--amber)]">03</span>
-          <h3 class="font-display text-lg mt-4 mb-2">Make your first deposit</h3>
+        <div class="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 card-shadow">
+          <span class="text-4xl font-extrabold text-[var(--blue)] tabular">03</span>
+          <h3 class="text-lg font-semibold mt-4 mb-2 text-[var(--text)]">Make your first deposit</h3>
           <p class="text-[var(--muted)] text-sm leading-relaxed">We match it dollar‑for‑dollar, no cap, credited within 24 hours — as long as it's within your 48‑hour window.</p>
         </div>
       </div>
     </section>
 
     <!-- BONUS CALCULATOR -->
-    <section id="calculator" class="bg-[var(--surface)] border-y border-white/5">
+    <section id="calculator" class="bg-white border-y border-[var(--border)]">
       <div class="max-w-6xl mx-auto px-5 sm:px-8 py-20 sm:py-28 grid lg:grid-cols-2 gap-14 items-center">
         <div>
-          <p class="font-mono text-xs uppercase tracking-[0.2em] text-[var(--amber)] mb-3">Bonus calculator</p>
-          <h2 class="font-display text-3xl sm:text-4xl font-semibold tracking-tight mb-5">See your match before you deposit.</h2>
+          <p class="text-xs font-semibold uppercase tracking-[0.15em] text-[var(--blue)] mb-3">Bonus calculator</p>
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-5 text-[var(--text)]">See your match before you deposit.</h2>
           <p class="text-[var(--muted)] leading-relaxed max-w-md">Move the slider to your planned first deposit and watch your total buying power update. No cap — every dollar gets matched.</p>
         </div>
 
-        <div class="rounded-2xl border border-white/10 bg-[var(--ink)] p-7">
+        <div class="rounded-2xl border border-[var(--border)] bg-[var(--bg)] p-7">
           <div class="flex items-center justify-between mb-2">
             <label for="depositSlider" class="text-sm text-[var(--muted)]">Your deposit</label>
-            <span id="depositLabel" class="font-mono text-lg font-semibold">$100</span>
+            <span id="depositLabel" class="text-lg font-semibold tabular text-[var(--text)]">$100</span>
           </div>
           <input id="depositSlider" type="range" min="10" max="2000" step="10" value="100"
-                 class="w-full accent-[var(--amber)] cursor-pointer">
-          <div class="flex justify-between text-xs text-[var(--muted)] font-mono mt-1">
+                 class="w-full accent-[var(--blue)] cursor-pointer">
+          <div class="flex justify-between text-xs text-[var(--muted)] tabular mt-1">
             <span>$10</span><span>$2,000+</span>
           </div>
 
           <div class="grid grid-cols-2 gap-4 mt-8">
             <div>
               <p class="text-xs text-[var(--muted)] mb-1">ProbablyRight match</p>
-              <p id="matchAmount" class="font-mono text-2xl font-semibold text-[var(--amber)]">$100</p>
+              <p id="matchAmount" class="text-2xl font-semibold tabular text-[var(--blue)]">$100</p>
             </div>
             <div>
               <p class="text-xs text-[var(--muted)] mb-1">Total buying power</p>
-              <p id="totalAmount" class="font-mono text-2xl font-semibold">$200</p>
+              <p id="totalAmount" class="text-2xl font-semibold tabular text-[var(--text)]">$200</p>
             </div>
           </div>
 
-          <div class="mt-6 h-2.5 rounded-full bg-white/10 overflow-hidden flex">
-            <div id="barDeposit" class="bar-fill h-full bg-white/50" style="width:50%"></div>
-            <div id="barMatch" class="bar-fill h-full bg-[var(--amber)]" style="width:50%"></div>
+          <div class="mt-6 h-2.5 rounded-full bg-[var(--border)] overflow-hidden flex">
+            <div id="barDeposit" class="bar-fill h-full bg-[var(--muted)]/50" style="width:50%"></div>
+            <div id="barMatch" class="bar-fill h-full bg-[var(--blue)]" style="width:50%"></div>
           </div>
           <p id="capNote" class="text-xs text-[var(--muted)] mt-3 h-4">No cap — your full deposit is matched, dollar for dollar.</p>
         </div>
@@ -243,13 +265,13 @@
 
     <!-- CTA -->
     <section id="signup" class="max-w-3xl mx-auto px-5 sm:px-8 py-20 sm:py-28">
-      <div class="rounded-2xl border border-white/10 bg-[var(--surface)] p-7 sm:p-10 text-center">
-        <p class="font-mono text-xs uppercase tracking-[0.2em] text-[var(--amber)] mb-3">Claim your bonus</p>
-        <h2 class="font-display text-3xl font-semibold tracking-tight mb-3">Ready when you are.</h2>
+      <div class="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-7 sm:p-10 text-center card-shadow">
+        <p class="text-xs font-semibold uppercase tracking-[0.15em] text-[var(--blue)] mb-3">Claim your bonus</p>
+        <h2 class="text-3xl font-extrabold tracking-tight mb-3 text-[var(--text)]">Ready when you are.</h2>
         <p class="text-[var(--muted)] mb-8 max-w-md mx-auto">Click through to Polymarket, create your account, and make your first deposit — any amount. Your match is tracked automatically through this link, no sign-up on our end required.</p>
 
         <a href="https://polymarket.com/?r=PolPromos" target="_blank" rel="noopener"
-           class="inline-block glow-amber bg-[var(--amber)] text-[#0B0E14] font-semibold px-8 py-3.5 rounded-full hover:brightness-110 transition">
+           class="inline-block glow-blue bg-[var(--blue)] text-white font-semibold px-8 py-3.5 rounded-full hover:bg-[var(--blue-dark)] transition">
           Go to Polymarket & sign up →
         </a>
 
@@ -259,40 +281,40 @@
 
     <!-- FAQ -->
     <section id="faq" class="max-w-3xl mx-auto px-5 sm:px-8 py-20 sm:py-28">
-      <p class="font-mono text-xs uppercase tracking-[0.2em] text-[var(--amber)] mb-3">FAQ</p>
-      <h2 class="font-display text-3xl font-semibold tracking-tight mb-10">Good to know</h2>
+      <p class="text-xs font-semibold uppercase tracking-[0.15em] text-[var(--blue)] mb-3">FAQ</p>
+      <h2 class="text-3xl font-extrabold tracking-tight mb-10 text-[var(--text)]">Good to know</h2>
 
-      <div class="divide-y divide-white/10 border-y border-white/10" id="faqList">
+      <div class="divide-y divide-[var(--border)] border-y border-[var(--border)]" id="faqList">
         <details class="group py-5">
-          <summary class="flex items-center justify-between cursor-pointer list-none font-medium">
+          <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-[var(--text)]">
             Who's eligible for the match?
             <span class="text-[var(--muted)] group-open:rotate-45 transition-transform text-xl leading-none">+</span>
           </summary>
           <p class="text-[var(--muted)] text-sm mt-3 leading-relaxed">Anyone 18 or older, signing up for the first time, in a region where Polymarket is available. One bonus per person.</p>
         </details>
         <details class="group py-5">
-          <summary class="flex items-center justify-between cursor-pointer list-none font-medium">
+          <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-[var(--text)]">
             How is the match paid out?
             <span class="text-[var(--muted)] group-open:rotate-45 transition-transform text-xl leading-none">+</span>
           </summary>
           <p class="text-[var(--muted)] text-sm mt-3 leading-relaxed">Automatically. As long as you reached Polymarket through our link, your first deposit is matched as trading credit within 24 hours of it clearing — no code or extra step needed.</p>
         </details>
         <details class="group py-5">
-          <summary class="flex items-center justify-between cursor-pointer list-none font-medium">
+          <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-[var(--text)]">
             Does ProbablyRight collect my info?
             <span class="text-[var(--muted)] group-open:rotate-45 transition-transform text-xl leading-none">+</span>
           </summary>
           <p class="text-[var(--muted)] text-sm mt-3 leading-relaxed">No. We don't collect your name, email, or funds. You sign up and deposit entirely on Polymarket; our link just carries the referral tag that tells Polymarket to apply your match.</p>
         </details>
         <details class="group py-5">
-          <summary class="flex items-center justify-between cursor-pointer list-none font-medium">
+          <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-[var(--text)]">
             Is there a cap on the match?
             <span class="text-[var(--muted)] group-open:rotate-45 transition-transform text-xl leading-none">+</span>
           </summary>
           <p class="text-[var(--muted)] text-sm mt-3 leading-relaxed">No — we match your first deposit dollar‑for‑dollar with no maximum. It applies once per person, and prediction markets always carry the risk of losing your stake, so deposit an amount you're genuinely comfortable with.</p>
         </details>
         <details class="group py-5">
-          <summary class="flex items-center justify-between cursor-pointer list-none font-medium">
+          <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-[var(--text)]">
             What's the 48‑hour window?
             <span class="text-[var(--muted)] group-open:rotate-45 transition-transform text-xl leading-none">+</span>
           </summary>
@@ -304,10 +326,10 @@
   </main>
 
   <!-- FOOTER -->
-  <footer id="terms" class="border-t border-white/10 bg-[var(--surface)]">
+  <footer id="terms" class="border-t border-[var(--border)] bg-white">
     <div class="max-w-6xl mx-auto px-5 sm:px-8 py-12 grid md:grid-cols-[1fr,1.2fr] gap-8">
       <div>
-        <p class="font-display font-semibold text-lg mb-2">ProbablyRight</p>
+        <p class="font-semibold text-lg mb-2 text-[var(--text)]">ProbablyRight</p>
         <p class="text-sm text-[var(--muted)] max-w-xs">An independent bonus partner for <a href="https://polymarket.com/?r=PolPromos" target="_blank" rel="noopener" class="underline hover:text-[var(--text)]">Polymarket</a> signups. Not affiliated with or endorsed by Polymarket beyond this referral arrangement.</p>
       </div>
       <div class="text-xs text-[var(--muted)] leading-relaxed">
@@ -332,7 +354,7 @@
     const items = markets.map(m => `
       <span class="flex items-center gap-2 px-6 whitespace-nowrap">
         <span class="text-[var(--text)]">${m.q}</span>
-        <span class="text-[var(--yes)]">${m.p}¢</span>
+        <span class="text-[var(--yes)] font-medium">${m.p}¢</span>
       </span>
     `).join('');
     tickerEl.innerHTML = items + items; // duplicate for seamless loop
@@ -356,7 +378,6 @@
     matchAmount.textContent = `$${match.toLocaleString()}`;
     totalAmount.textContent = `$${total.toLocaleString()}`;
 
-    // always an even 50/50 split since match always equals deposit
     barDeposit.style.width = `50%`;
     barMatch.style.width = `50%`;
   }
@@ -428,15 +449,12 @@
         startCountdown(deadline);
       }
     } catch (err) {
-      // Storage unavailable for some reason — fall back to an
-      // in-memory-only timer so the page still works, it just won't
-      // persist across a full page reload.
       console.error('Timer storage error:', err);
       startCountdown(Date.now() + WINDOW_MS);
     }
   }
   initTimer();
-
+</script>
 
 </body>
 </html>
